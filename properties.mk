@@ -150,7 +150,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
     ro.telephony.default_network=22,20 \
     ro.vendor.use_data_netmgrd=true \
-    telephony.lteOnCdmaDevice=1
+    telephony.lteOnCdmaDevice=1 \
+    persist.radio.aosp_usr_pref_sel=true
 
 # Sensor
 PRODUCT_PROPERTY_OVERRIDES += \
