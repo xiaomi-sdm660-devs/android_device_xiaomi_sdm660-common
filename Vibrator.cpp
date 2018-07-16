@@ -44,6 +44,10 @@ namespace vibrator {
 namespace V1_2 {
 namespace implementation {
 
+#define STRONG_MAGNITUDE        0x7fff
+#define MEDIUM_MAGNITUDE        0x5fff
+#define LIGHT_MAGNITUDE         0x3fff
+
 using Status = ::android::hardware::vibrator::V1_0::Status;
 
 Vibrator::Vibrator(int vibraFd, bool supportGain, bool supportEffects) :
@@ -150,11 +154,25 @@ Return<bool> Vibrator::supportsAmplitudeControl() {
 }
 
 Return<Status> Vibrator::setAmplitude(uint8_t amplitude) {
-    int tmp;
+    int tmp, ret;
+    struct input_event ie;
 
-    tmp = amplitude * 0x7fff / 255;
+    if (!mSupportGain)
+        return Status::UNSUPPORTED_OPERATION;
+
+    tmp = amplitude * (STRONG_MAGNITUDE - LIGHT_MAGNITUDE) / 255;
+    tmp += LIGHT_MAGNITUDE;
+    ie.type = EV_FF;
+    ie.code = FF_GAIN;
+    ie.value = tmp;
+
+    ret = TEMP_FAILURE_RETRY(write(mVibraFd, &ie, sizeof(ie)));
+    if (ret == -1) {
+        ALOGE("write FF_GAIN failed, errno = %d", -errno);
+        return Status::UNKNOWN_ERROR;
+    }
+
     mCurrMagnitude = tmp;
-
     return Status::OK;
 }
 
@@ -164,13 +182,13 @@ static int16_t convertEffectStrength(EffectStrength es) {
 
     switch (es) {
     case EffectStrength::LIGHT:
-        magnitude = 0x3fff;
+        magnitude = LIGHT_MAGNITUDE;
         break;
     case EffectStrength::MEDIUM:
-        magnitude = 0x5fff;
+        magnitude = MEDIUM_MAGNITUDE;
         break;
     case EffectStrength::STRONG:
-        magnitude = 0x7fff;
+        magnitude = STRONG_MAGNITUDE;
         break;
     default:
         return 0;
