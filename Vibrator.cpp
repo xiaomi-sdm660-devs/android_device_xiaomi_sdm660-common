@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, The Linux Foundation. All rights reserved.
+ * Copyright (c) 2018-2019, The Linux Foundation. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -81,6 +81,15 @@ Return<Status> Vibrator::play(uint32_t timeoutMs) {
     int ret;
 
     if (timeoutMs != 0) {
+        if (mCurrAppId != -1) {
+            ret = TEMP_FAILURE_RETRY(ioctl(mVibraFd, EVIOCRMFF, mCurrAppId));
+            if (ret == -1) {
+                ALOGE("ioctl EVIOCRMFF failed, errno = %d", -errno);
+                goto errout;
+            }
+            mCurrAppId = -1;
+        }
+
         memset(&effect, 0, sizeof(effect));
         if (mCurrEffectId != -1) {
             data[0] = mCurrEffectId;
