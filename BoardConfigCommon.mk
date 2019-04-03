@@ -219,6 +219,9 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 # RIL
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 
+# Security patch level	
+VENDOR_SECURITY_PATCH := 2018-06-05
+
 # SELinux
 include device/qcom/sepolicy-legacy-um/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(COMMON_PATH)/sepolicy/vendor
