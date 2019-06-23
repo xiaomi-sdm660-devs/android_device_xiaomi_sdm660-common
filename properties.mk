@@ -151,7 +151,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_network=22,20 \
     ro.vendor.use_data_netmgrd=true \
     telephony.lteOnCdmaDevice=1 \
-    persist.radio.aosp_usr_pref_sel=true
+    persist.radio.aosp_usr_pref_sel=true \
+    persist.vendor.radio.rat_on=combine \
+    persist.vendor.radio.data_ltd_sys_ind=1 \
+    persist.vendor.radio.data_con_rprt=1 \
+    persist.radio.calls.on.ims=1
 
 # Sensor
 PRODUCT_PROPERTY_OVERRIDES += \
