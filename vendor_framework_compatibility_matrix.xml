@@ -371,6 +371,15 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <instance>gnss_vendor</instance>
         </interface>
     </hal>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.cryptfshw</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ICryptfsHw</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
     <hal format="hidl" optional="true">
         <name>vendor.qti.gnss</name>
         <version>1.0-2</version>
