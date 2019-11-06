@@ -51,6 +51,10 @@ vendor/lib/hw/com.qualcomm.qti.ant@1.0-impl.so|1f2a8a0ed450304b6836e5396cfad59a8
 vendor/lib64/com.qualcomm.qti.ant@1.0.so|c215be8bb4d2bbf0953f45b30187371988e32117
 vendor/lib64/hw/com.qualcomm.qti.ant@1.0-impl.so|2527c25a83cc58cb68d494679e98f22ca624ea70
 
+# AptX - from mata
+lib64/libaptX_encoder.so|22f5749edb5099526788c22708099a7791dd837f
+lib64/libaptXHD_encoder.so|c4ad4d6d7615f7df3ea1a4be5c6dae8a8c8ee8b1
+
 # Audio - from jasmine
 vendor/lib/libacdb-fts.so|84ae662a62af6dbecd34898a3d40a65b90b1ab51
 vendor/lib/libacdbloader.so|828e76b60eead184c5e8401c72bbe6eea753fdf6
