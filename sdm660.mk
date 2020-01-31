@@ -25,7 +25,7 @@
 $(call inherit-product, vendor/xiaomi/sdm660-common/sdm660-common-vendor.mk)
 
 # Enable updating of APEXes
-$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+# $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 COMMON_PATH := device/xiaomi/sdm660-common
 
