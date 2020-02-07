@@ -69,6 +69,7 @@ vendor/lib64/hw/vendor.qti.hardware.btconfigstore@1.0-impl.so|5e06b7b33d084975d6
 vendor/lib64/libbtnv.so|a6793a7b93fa607fcec39da7479566f84ed39aa4
 vendor/lib64/vendor.qti.hardware.bluetooth_sar@1.0.so|9b7ae20ce9d6d2a67fdac94268cec441278cca3d
 vendor/lib64/vendor.qti.hardware.btconfigstore@1.0.so|e08969ef1897ec5958894323f7d6e730a1d7ce25
+vendor/lib64/vendor.qti.hardware.fm@1.0.so|9c1b952043c7722fd27bfd971ecebb2584671862
 
 # Bluetooth (aptX)
 product/lib64/libaptX_encoder.so|df1c89d7af1bb35808d5fe3496b04ba066c10cbc
@@ -168,19 +169,6 @@ vendor/lib64/libsecureui_svcsock.so|e364290497862270cd01d9be84f0141ea92e92f9
 vendor/lib64/libSecureUILib.so|54ce5c719dfdeb0896187be4cf0903bf4e6c4ba7
 vendor/lib64/libssd.so|d6758bd01b360be7bb68f35f56978a5e9a21d3c3
 vendor/lib64/libStDrvInt.so|8de13b46e8f21016c0fffaec34b0a2bacfccec04
-
-# FM - from jasmine
-lib/libfm-hci.so|b066567e07279bf59e78f7d318302dd706bb80fe
-lib/fm_helium.so|fb2a591a61122bbdf818ba9e6c931aa7c3d8a953
-lib64/libfm-hci.so|24cd3321d251409aec7d5b6fe160c9fd37a12af5
-lib64/fm_helium.so|e41e3a18f5a0dc666adad471e7332c707b4d2044
-vendor/bin/fm_qsoc_patches|ea7004d7d85227e56df2f8b49a529df92f6b8726
--lib/vendor.qti.hardware.fm@1.0.so|e383388c912ee43bd00eefcac60e179c863e858b
--lib64/vendor.qti.hardware.fm@1.0.so|5c5beea6433843df16650789c6bab947b371c23a
-vendor/lib/hw/vendor.qti.hardware.fm@1.0-impl.so|967a941dcf364b931e0db4402d0ea028a20ed2ff
-vendor/lib/vendor.qti.hardware.fm@1.0.so|ff103851777cad17b665e1ea2df37deebdcbee43
-vendor/lib64/hw/vendor.qti.hardware.fm@1.0-impl.so|665bdb1a9d0368a0ed45c384c191e5a84c985c8e
-vendor/lib64/vendor.qti.hardware.fm@1.0.so|b1572c12b2e5701c488d65aa4651b8ff9437f6ee
 
 # GPS - from LA.UM.8.2.r1-05100-sdm660.0
 etc/permissions/com.qti.location.sdk.xml|cb68a566bd77dcc75bb7547199d528289fac01cb
