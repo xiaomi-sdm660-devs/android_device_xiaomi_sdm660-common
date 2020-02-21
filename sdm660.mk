@@ -274,6 +274,7 @@ PRODUCT_COPY_FILES += \
 # Init
 PRODUCT_PACKAGES += \
     init.class_main.sh \
+    init.dalvik.sh \
     init.msm.usb.configfs.rc \
     init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \
@@ -284,6 +285,7 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.sh \
     init.recovery.qcom.rc \
     init.target.rc \
+    init.xiaomi.rc \
     ueventd.qcom.rc
 
 # IPv6
