@@ -1,23 +1,23 @@
-# ADSP - from LA.UM.8.2.r1-05100-sdm660.0
-vendor/bin/adsprpcd|5b803e679ddbce4e59c2a67433ffefa6396d61f3
-vendor/lib/libadsp_default_listener.so|9c96cb953e83b6abc90dfbf4b62af7ddbecd97b7
+# ADSP - from LA.UM.8.2.1.r1-03000-sdm660.0
+vendor/bin/adsprpcd|dbb7108a6f199d963cbf2145000edbd1be755385
+vendor/lib/libadsp_default_listener.so|3b1c75c24c4121f9a8663724aac6c3c95ddb477b
 vendor/lib/libadsp_hvx_callback_skel.so|67cb46e6da3fa84d0cf086172591ba13493e663f
 vendor/lib/libadsp_hvx_stub.so|b3e1d3eef6cfdd51213dad37a8972bc931d1c139
-vendor/lib/libadsprpc.so|c95566209eff0d3e6e7edb3166273ad20dd03297
-vendor/lib/libcdsprpc.so|b0904719623aab0d7381e9ac61cce7809dfad0b6
+vendor/lib/libadsprpc.so|b3f064f16bdb37514a933deaaa8fd57ed32b8bb3
+vendor/lib/libcdsprpc.so|673ed7b8e06505235dddbe56318aeb9df1b36552
 vendor/lib/libfastcvadsp_stub.so|9957df1493863d78da261ab3bb8756be3f3d2583
-vendor/lib/libfastcvopt.so|00f5293affa2fcc606b0044f707761c0bb975365
-vendor/lib/libmdsprpc.so|6b3c9f62d95ba9a65d9ce2d21530fa36ebed2414
-vendor/lib/libsdsprpc.so|09e6c5093e6322c71ca98c53865aa5402e415538
-vendor/lib64/libadsp_default_listener.so|ec9a452e318db1ddc5d826dd7cc2b14dd5fb2a14
-vendor/lib64/libadsprpc.so|54fea5f7c11b9913ed2eeb125804e0fb32ed5e21
-vendor/lib64/libcdsprpc.so|44e6a3aec6457464ac87f71680e443fd1c933d16
+vendor/lib/libfastcvopt.so|93fb916ae870ad8fc0d444cb86b5384b626dcdc7
+vendor/lib/libmdsprpc.so|156643fde22dfcba17ad25ac23f4df55c03be8a3
+vendor/lib/libsdsprpc.so|dccd6482e19c66819a15734b2c221aa9c16cf7f6
+vendor/lib64/libadsp_default_listener.so|3bbb93af25b55dd8070d101beda5e4fe4a585344
+vendor/lib64/libadsprpc.so|f0d9b4ab0f70d58521be846df173e6f52e2e8ab1
+vendor/lib64/libcdsprpc.so|bc130d609400342c9a41f20ff63a3cfacec66e2e
 vendor/lib64/libfastcvadsp_stub.so|f84fd537f8f176e598c0cb49f0c457f308b67be4
-vendor/lib64/libfastcvopt.so|59d111f7472ed70390d15944a5f304db848447e4
-vendor/lib64/libmdsprpc.so|f9eb09c64dcd2ec4356bab8d1d242901d271edb0
-vendor/lib64/libsdsprpc.so|99b6b23efeefc5204fb9eb0fb174b73494c7602b
+vendor/lib64/libfastcvopt.so|85f6e71bde2c89f9d93623d6a6f787b5a5f00859
+vendor/lib64/libmdsprpc.so|a91365b3f3a5472149d5b9394314dbdcc62f538b
+vendor/lib64/libsdsprpc.so|68ccc88aa6f3a13904c0b170947b55a9df3b5dbf
 
-# ADSP modules - from LA.UM.8.2.r1-05100-sdm660.0
+# ADSP modules - from LA.UM.8.2.1.r1-03000-sdm660.0
 vendor/lib/rfsa/adsp/libadsp_fd_skel.so|677d2932dac248049f031fc5893163e22b49439a
 vendor/lib/rfsa/adsp/libadsp_hvx_add_constant.so|26fb64a92d48e801a31a867976d325efa366a255
 vendor/lib/rfsa/adsp/libadsp_hvx_skel.so|05776246445316aea822eaa9cb6ae7a47b23c9aa
@@ -31,7 +31,6 @@ vendor/lib/rfsa/adsp/libFastRPC_UTF_Forward_Qtc2_skel.so|b9f68e320d24e9c51871a20
 vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so|99752b14bc669589f598b2c555af96834147e41e
 vendor/lib/rfsa/adsp/libscveObjectSegmentation_skel.so|d2174a2a4a680e93ee4262b5e6d99fd3c398620c
 vendor/lib/rfsa/adsp/libscveT2T_skel.so|487f830aca26c85ef79c8b599b2f03668ab732b5
-vendor/lib/rfsa/adsp/libvpp_svc_skel.so|2da97f61c1d14f1f9a38aecd8ab89a1f6fa8d991
 
 # ADSP modules - from jasmine
 vendor/lib/rfsa/adsp/dirac_resource.dar|7728d5b2ee2927a01df5bd6d7edae3736186c844
