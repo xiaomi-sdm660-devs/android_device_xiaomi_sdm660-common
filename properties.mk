@@ -85,16 +85,45 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
-    vendor.qcom.bluetooth.soc=cherokee
+    vendor.qcom.bluetooth.soc=cherokee \
+    vendor.bluetooth.soc=cherokee \
+    persist.vendor.btstack.enable.splita2dp=true \
+    persist.vendor.btstack.a2dp_offload_cap=sbc-aptx-aptxhd-aac
+
+# Camera
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.camera.preview.ubwc=0 \
+    vendor.video.disable.ubwc=1
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    vidc.enc.dcvs.extra-buff-count=2
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196610 \
-    vendor.video.disable.ubwc=1
+    ro.vendor.display.cabl=0 \
+    debug.sf.enable_hwc_vds=1 \
+    debug.sf.hw=1 \
+    debug.sf.latch_unsignaled=1 \
+    dev.pm.dyn_samplingrate=1 \
+    vendor.display.enable_default_color_mode=1 \
+    vendor.display.disable_skip_validate=1 \
+    vendor.gralloc.enable_fb_ubwc=1
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.sf.hwc_set_default_colormode=true
 
 # FRP
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.frp.pst=/dev/block/bootdevice/by-name/frp \
+    ro.frp.pst=/dev/block/bootdevice/by-name/frp
+
+# Netflix
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.netflix.bsp_rev=Q660-13149-1
+
+# NFC
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.nfc.port=I2C
 
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -103,17 +132,71 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.multisim.config=dsds \
+    persist.vendor.cne.feature=1 \
+    persist.vendor.data.mode=concurrent \
     persist.vendor.radio.apm_sim_not_pwdn=1 \
+    persist.vendor.radio.atfwd.start=true \
     persist.vendor.radio.custom_ecc=1 \
     persist.vendor.radio.rat_on=combine \
-    persist.vendor.radio.sib16_support=1
+    persist.vendor.radio.sib16_support=1 \
+    ro.telephony.default_network=22,22 \
+    ro.vendor.use_data_netmgrd=true \
+    ro.vendor.telephony.default_network=22,22 \
+    telephony.lteOnCdmaDevice=1
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    persist.radio.VT_CAM_INTERFACE=2 \
+    persist.radio.VT_ENABLE=1 \
+    persist.radio.VT_HYBRID_ENABLE=1 \
+    persist.radio.ROTATION_ENABLE=1 \
+    persist.radio.REVERSE_QMI=0 \
+    persist.radio.RATE_ADAPT_ENABLE=1 \
+    persist.radio.VT_USE_MDM_TIME=0 \
+    persist.rild.nitz_plmn="" \
+    persist.rild.nitz_long_ons_0="" \
+    persist.rild.nitz_long_ons_1="" \
+    persist.rild.nitz_long_ons_2="" \
+    persist.rild.nitz_long_ons_3="" \
+    persist.rild.nitz_short_ons_0="" \
+    persist.rild.nitz_short_ons_1="" \
+    persist.rild.nitz_short_ons_2="" \
+    persist.rild.nitz_short_ons_3="" \
+    ril.subscription.types=NV,RUIM \
+    rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.so \
+    DEVICE_PROVISIONED=1
+
+# RmNet Data
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    persist.data.wda.enable=true \
+    persist.data.df.dl_mode=5 \
+    persist.data.df.ul_mode=5 \
+    persist.data.df.agg.dl_pkt=10 \
+    persist.data.df.agg.dl_size=4096 \
+    persist.data.df.mux_count=8 \
+    persist.data.df.iwlan_mux=9 \
+    persist.data.df.dev_name=rmnet_usb0 \
+    persist.data.iwlan.enable=true \
+    persist.rmnet.data.enable=true \
+    persist.rmnet.mux=enabled
 
 # Sensor
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.sdk.sensors.gestures=false \
     ro.vendor.sensors.cmc=false \
     ro.vendor.sensors.facing=false
+    ro.vendor.sensors.dev_ori=true \
+    ro.vendor.sensors.pmd=true \
+    ro.vendor.sensors.sta_detect=true \
+    ro.vendor.sensors.mot_detect=true
 
 # Time
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.delta_time.enable=true
+
+# WFD
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.wfd.virtual=0
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    persist.debug.wfd.enable=1 \
+    persist.hwc.enable_vds=1
