@@ -22,6 +22,8 @@
 #
 
 # Inherit proprietary files
+$(call inherit-product-if-exists, vendor/xiaomi/MiuiCamera/config.mk)
+$(call inherit-product-if-exists, vendor/gapps/common/common-vendor.mk)
 $(call inherit-product, vendor/xiaomi/sdm660-common/sdm660-common-vendor.mk)
 
 # Inherit properties
