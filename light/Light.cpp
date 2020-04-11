@@ -30,19 +30,16 @@
 
 namespace {
 
-#define LEDS "/sys/class/leds/"
-#define LCD_LED LEDS "lcd-backlight/"
-#define WHITE LEDS "white/"
-#define BUTTON LEDS "button-backlight/"
-#define BUTTON1 LEDS "button-backlight1/"
-#define BRIGHTNESS "brightness"
-#define MAX_BRIGHTNESS "max_brightness"
-#define BLINK "blink"
-#define DUTY_PCTS "duty_pcts"
-#define PAUSE_HI "pause_hi"
-#define PAUSE_LO "pause_lo"
-#define RAMP_STEP_MS "ramp_step_ms"
-#define START_IDX "start_idx"
+#define PPCAT_NX(A, B) A/B
+#define PPCAT(A, B) PPCAT_NX(A, B)
+#define STRINGIFY_INNER(x) #x
+#define STRINGIFY(x) STRINGIFY_INNER(x)
+
+#define LEDS(x) PPCAT(/sys/class/leds, x)
+#define LCD_ATTR(x) STRINGIFY(PPCAT(LEDS(lcd-backlight), x))
+#define WHITE_ATTR(x) STRINGIFY(PPCAT(LEDS(white), x))
+#define BUTTON_ATTR(x) STRINGIFY(PPCAT(LEDS(button-backlight), x))
+#define BUTTON1_ATTR(x) STRINGIFY(PPCAT(LEDS(button-backlight1), x))
 
 using ::android::base::ReadFileToString;
 using ::android::base::WriteStringToFile;
@@ -119,7 +116,7 @@ namespace implementation {
 Light::Light() {
     std::string buf;
 
-    if (ReadFileToString(LCD_LED MAX_BRIGHTNESS, &buf)) {
+    if (ReadFileToString(LCD_ATTR(max_brightness), &buf)) {
         max_screen_brightness_ = std::stoi(buf);
     } else {
         max_screen_brightness_ = kDefaultMaxScreenBrightness;
@@ -127,23 +124,23 @@ Light::Light() {
                    << kDefaultMaxLedBrightness;
     }
 
-    if (ReadFileToString(WHITE MAX_BRIGHTNESS, &buf)) {
+    if (ReadFileToString(WHITE_ATTR(max_brightness), &buf)) {
         max_led_brightness_ = std::stoi(buf);
     } else {
         max_led_brightness_ = kDefaultMaxLedBrightness;
         LOG(ERROR) << "Failed to read max LED brightness, fallback to " << kDefaultMaxLedBrightness;
     }
 
-    if (!access(BUTTON BRIGHTNESS, W_OK)) {
+    if (!access(BUTTON_ATTR(brightness), W_OK)) {
         lights_.emplace(std::make_pair(Type::BUTTONS,
                                        [this](auto&&... args) { setLightButtons(args...); }));
-        buttons_.emplace_back(BUTTON BRIGHTNESS);
+        buttons_.emplace_back(BUTTON_ATTR(brightness));
 
-        if (!access(BUTTON1 BRIGHTNESS, W_OK)) {
-            buttons_.emplace_back(BUTTON1 BRIGHTNESS);
+        if (!access(BUTTON1_ATTR(brightness), W_OK)) {
+            buttons_.emplace_back(BUTTON1_ATTR(brightness));
         }
 
-        if (ReadFileToString(BUTTON MAX_BRIGHTNESS, &buf)) {
+        if (ReadFileToString(BUTTON_ATTR(max_brightness), &buf)) {
             max_button_brightness_ = std::stoi(buf);
         } else {
             max_button_brightness_ = kDefaultMaxLedBrightness;
@@ -177,7 +174,7 @@ Return<void> Light::getSupportedTypes(getSupportedTypes_cb _hidl_cb) {
 
 void Light::setLightBacklight(Type /*type*/, const LightState& state) {
     uint32_t brightness = RgbaToBrightness(state.color, max_screen_brightness_);
-    WriteToFile(LCD_LED BRIGHTNESS, brightness);
+    WriteToFile(LCD_ATTR(brightness), brightness);
 }
 
 void Light::setLightButtons(Type /*type*/, const LightState& state) {
@@ -207,7 +204,7 @@ void Light::applyNotificationState(const LightState& state) {
     uint32_t white_brightness = RgbaToBrightness(state.color, max_led_brightness_);
 
     // Turn off the leds (initially)
-    WriteToFile(WHITE BLINK, 0);
+    WriteToFile(WHITE_ATTR(blink), 0);
 
     if (state.flashMode == Flash::TIMED && state.flashOnMs > 0 && state.flashOffMs > 0) {
         /*
@@ -226,14 +223,14 @@ void Light::applyNotificationState(const LightState& state) {
                    << " onMs=" << state.flashOnMs << " offMs=" << state.flashOffMs;
 
         // White
-        WriteToFile(WHITE START_IDX, 0);
-        WriteToFile(WHITE DUTY_PCTS, GetScaledDutyPcts(white_brightness));
-        WriteToFile(WHITE PAUSE_LO, static_cast<uint32_t>(state.flashOffMs));
-        WriteToFile(WHITE PAUSE_HI, static_cast<uint32_t>(pause_hi));
-        WriteToFile(WHITE RAMP_STEP_MS, static_cast<uint32_t>(step_duration));
-        WriteToFile(WHITE BLINK, 1);
+        WriteToFile(WHITE_ATTR(start_idx), 0);
+        WriteToFile(WHITE_ATTR(duty_pcts), GetScaledDutyPcts(white_brightness));
+        WriteToFile(WHITE_ATTR(pause_lo), static_cast<uint32_t>(state.flashOffMs));
+        WriteToFile(WHITE_ATTR(pause_hi), static_cast<uint32_t>(pause_hi));
+        WriteToFile(WHITE_ATTR(ramp_step_ms), static_cast<uint32_t>(step_duration));
+        WriteToFile(WHITE_ATTR(blink), 1);
     } else {
-        WriteToFile(WHITE BRIGHTNESS, white_brightness);
+        WriteToFile(WHITE_ATTR(brightness), white_brightness);
     }
 }
 
